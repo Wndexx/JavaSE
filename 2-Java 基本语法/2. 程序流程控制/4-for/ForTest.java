@@ -73,7 +73,7 @@ class ForTest {
 
 
 		// 2. 正整数 m 和 n 的最大公约数 和 最小公倍数
-		// m * n = gcd * lcm000000000000000000000000000000000000000000000000000000000000000000000
+		// m * n = gcd * lcm
 		/*
 			Scanner scan = new Scanner(System.in);
 
