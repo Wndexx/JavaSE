@@ -11,7 +11,9 @@
 
 		}
 
-	
+	避免死循环
+
+	与 for 可以相互转换 初始化条件作用域不同
 
 */
 class WhileTest {
@@ -25,5 +27,7 @@ class WhileTest {
 			}
 			i++;
 		}
+		// 出了 while 可以使用
+		System.out.println(i); // 101
 	}
 }
