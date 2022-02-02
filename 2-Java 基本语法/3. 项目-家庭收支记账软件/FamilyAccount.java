@@ -3,6 +3,17 @@
 
 		不同 case 中不能定义同名变量
 
+
+	代码优劣标准
+
+		正确性
+
+		可读性
+
+		健壮性
+
+		高效率 低存储 时间复杂度 空间复杂度  算法好坏
+
 */
 public class FamilyAccount {
 	public static void main(String[] args) {
