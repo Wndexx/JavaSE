@@ -13,8 +13,6 @@
 
 	至少执行一次循环体
 
-	
-
 */
 import java.util.Scanner;
 class DoWhileTest {
