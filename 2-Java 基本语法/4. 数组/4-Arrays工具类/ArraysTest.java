@@ -5,7 +5,7 @@ import java.util.Arrays;
 /*
 	java.util.Arrays：操作数组的工具类，里面定义了很多操作数组的方法
 	
-	常用方法
+	常用方法:
 	
 		1. boolean equals(int[] a, int[] b)   判断两个数组是否相等
 		

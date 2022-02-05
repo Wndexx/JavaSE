@@ -50,7 +50,7 @@
 
     4. API application programming interface  语言提供的类库
 
- */
+*/
 class HelloChina{
     public static void main(String[] args) {
         System.out.println("Hello World");
