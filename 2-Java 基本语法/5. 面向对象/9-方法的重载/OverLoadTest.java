@@ -34,8 +34,6 @@ public class OverLoadTest {
 		OverLoadTest test = new OverLoadTest();
 		test.getSum(1,2);
 		
-		
-		
 	}
 	
 	// 如下的 4 个方法构成了重载
@@ -55,6 +53,7 @@ public class OverLoadTest {
 		System.out.println("4");
 	}
 	
+	// 如下的 3 个方法不能与上述 4 个方法构成重载
 	// public int getSum(int i,int j) {
 	// 	return 0;
 	// }
