@@ -54,8 +54,8 @@ public class MethodArgsTest {
 	//}
 	
 	// 以下两个方法视为同一个方法
-	public void show(String ... strs) {
-		System.out.println("show(String ... strs)");
+	public void show(String... strs) {
+		System.out.println("show(String... strs)");
 		
 		for(int i = 0;i < strs.length;i++) {
 			System.out.println(strs[i]);
@@ -66,7 +66,7 @@ public class MethodArgsTest {
 	//	
 	// }
 	
-	public void show(int i,String ...strs) {
+	public void show(int i,String... strs) {
 		
 	}
 }
