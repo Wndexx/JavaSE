@@ -46,6 +46,24 @@ import java.util.Date;
 		  所以，对于重载而言，在方法调用之前，编译器就已经确定了所要调用的方法，这称为 "早绑定" 或 "静态绑定"
 		  
 		  而对于多态，只有等到方法调用的那一刻，解释运行器才会确定所要调用的具体方法，这称为 "晚绑定" 或 "动态绑定" 
+
+
+	面试题：
+
+		1. 谈谈你对多态性的理解？
+
+			(1) 实现代码的通用性
+
+			(2) Object 类中定义的 public boolean equals(Object obj){}
+
+			JDBC: 使用 java 程序操作数据库(MySQL、Oracle、DB2、SQL Server)：获取数据库连接、CRUD
+
+			(3) 抽象类、接口的使用肯定体现了多态性。（抽象类、接口不能实例化）
+
+
+		2. 多态是编译时行为还是运行时行为？
+
+			运行时行为
 	
 */
 public class PersonTest {
@@ -90,25 +108,27 @@ public class PersonTest {
 		m1.earnMoney();
 		m1.isSmoking = true;
 
-		// 使用强转型，可能出现 ClassCastException 的异常
+		// 使用强转时，可能出现 ClassCastException 的异常
 		// java.lang.ClassCastException 类型转换异常
 		// Woman w1 = (Woman)p2;
 		// w1.goShopping();
 
 		/*
-		 * instanceof 关键字的使用:
-		 * 
-		 * a instanceof A: 判断 对象a 是否是 类A 的实例，如果是，返回true；如果不是，返回 false
-		 * 
-		 * 使用情境：为了避免在向下转型时，出现 ClassCastException 的异常，我们在向下转型之前，先进行 instanceof 的判断。
-		 * 
-		 * 一旦返回 true ，就进行向下转型
-		 * 
-		 * 如果返回 false，不进行向下转型
-		 * 
-		 * 如果 a instanceof A 返回 true，则 a instanceof B 也返回 true。其中，类B 是 类A 的父类
-		 * 
-		 */
+			instanceof 关键字的使用:
+			
+			a instanceof A: 判断 对象a 是否是 类A 的实例，如果是，返回true；如果不是，返回 false
+			
+			使用情境：为了避免在向下转型时，出现 ClassCastException 的异常，我们在向下转型之前，先进行 instanceof 的判断。
+				
+				- 一旦返回 true ，就进行向下转型
+				
+				- 如果返回 false，不进行向下转型
+			
+			如果 a instanceof A 返回 true，则 a instanceof B 也返回 true。其中，类B 是 类A 的父类
+		 	
+		 	要求 a 所属的类与 类A 必须是子类和父类的关系，否则编译错误
+
+		*/
 
 		if (p2 instanceof Woman) {
 			Woman w1 = (Woman) p2;
