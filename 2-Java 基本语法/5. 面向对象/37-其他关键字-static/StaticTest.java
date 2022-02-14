@@ -5,7 +5,7 @@ package com.wndexx.java1;
 	
 	1. static ：静态的
 	
-	2. static 可以用来修饰：属性、 方法、 代码块、 内部类
+	2. static 可以用来修饰：主要用来修饰类的内部结构：属性、 方法、 代码块、 内部类
 	
 	3. 使用 static 修饰属性：静态变量(或类变量)
 	

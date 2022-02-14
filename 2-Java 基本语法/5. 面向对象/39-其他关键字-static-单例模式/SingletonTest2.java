@@ -24,7 +24,7 @@ class Order{
 	private static Order instance = null;
 	
 	// 3. 声明 public 、static 的返回当前类对象的方法
-	public static Order getInstance() {
+	public synchronized static Order getInstance() {
 		if(instance == null)
 			instance = new Order();
 		return instance;

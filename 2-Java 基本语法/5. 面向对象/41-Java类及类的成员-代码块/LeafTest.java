@@ -1,5 +1,11 @@
 package com.wndexx.java3;
-// 总结：由父及子，静态先行
+
+/* 
+	实例化子类对象时，涉及到父类、子类中静态代码块、非静态代码块、构造器的加载顺序：
+
+	由父及子，静态先行
+
+*/
 class Root {
 	static {
 		System.out.println("Root的静态初始化块");

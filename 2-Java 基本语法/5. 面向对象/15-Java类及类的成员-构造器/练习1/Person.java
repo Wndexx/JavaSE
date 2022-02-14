@@ -57,7 +57,7 @@ public class Person {
 
 	// 绝对不要这样写
 	// public int doAge(int a) {
-	// age = a;
-	// return age;
+	// 	age = a;
+	// 	return age;
 	// }
 }
