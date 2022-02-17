@@ -12,7 +12,7 @@ package com.wndexx.java;
 		
 		(2) 抽象类中一定有构造器，便于子类实例化时调用(设计：子类对象实例化的全过程)
 		
-		(3) 开发中，都会提供抽象类的子类，让子类对象实例化，完成相关的操作
+		(3) 开发中，都会提供抽象类的子类，让子类对象实例化，完成相关的操作 ------> 抽象的使用前提：继承性
 		
 	4. abstract 修饰方法：抽象方法
 		
@@ -23,6 +23,9 @@ package com.wndexx.java;
 		(3) 若子类重写了父类中的所有的抽象方法后，此子类方可实例化
 		
 			若子类没有重写父类中的所有的抽象方法后，则次子类也必须是一个抽象类，需要使用 abstract 修饰
+
+	
+	举例：IO流中设计到的抽象类：InputStream/OutputStream/Reader/Writer，在其内部定义了抽象的 read()、write() 方法
 			
 */
 public class AbstractTest {

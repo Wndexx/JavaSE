@@ -51,7 +51,6 @@ public class InnerClassTest {
 		System.out.println();
 		
 		bird.display("黄鹂");
-
 	}
 }
 
