@@ -31,7 +31,7 @@ public class StringTest {
 
         5. 通过字面量的方式（区别与 new ）给一个字符串赋值，此时的字符串值声明在字符串常量池中
 
-        6. 字符串常量池中是不会存储相同内容的字符串的
+        6. 字符串常量池中是不会存储相同内容(使用 String 类的 equals()比较，返回true)的字符串的
     */
     @Test
     public void test1() {
@@ -151,4 +151,14 @@ public class StringTest {
         String s6 = s4.concat("hadoop");
         System.out.println(s4 == s6); // false
     }
+	
+	/*
+		JVM 中字符串常量池存放位置说明：
+		
+			jdk 1.6(jdk 6.0，java 6.0) ：字符串常量池存储在方法区（永久区）
+			
+			jdk 1.7：字符串常量池存储在堆空间
+			
+			jdk 1.8：字符串常量池存储在方法区（元空间）
+	*/
 }

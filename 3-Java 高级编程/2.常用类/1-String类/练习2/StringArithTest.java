@@ -140,7 +140,7 @@ public class StringArithTest {
         for (int i = 0; i < s1.length(); i++) {
             for (int j = s1.length() - 1; j > i; j--) {
                 String s = s1.substring(i, j);
-                if (getCount(s2, s) <= 0) {
+                if (!s2.contains(s)) {
                     continue;
                 }
                 if (s3.length() < s.length())

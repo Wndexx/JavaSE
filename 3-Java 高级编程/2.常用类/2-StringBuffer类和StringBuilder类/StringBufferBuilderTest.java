@@ -42,6 +42,16 @@ public class StringBufferBuilderTest {
                     默认情况下，扩容为原来容量的 2 倍 + 2，同时将原有数组中的元素复制到新的数组中
 
                     指导意义：开发中建议大家使用： StringBuffer(int capacity) 或 StringBuilder(int capacity)
+					
+					
+		String 与 StringBuffer、StringBuilder 之间的转换			
+					
+			String ---> StringBuffer、StringBuilder：调用 StringBuffer、StringBuilder 的构造器
+			
+			StringBuffer、StringBuilder ---> String：调用 String 的构造器；StringBuffer、StringBuilder 的 toString()
+			
+		
+		
     */
     @Test
     public void test1() {
