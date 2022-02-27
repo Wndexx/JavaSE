@@ -2,11 +2,17 @@ package com.wndexx.java;
 
 import org.junit.Test;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.temporal.Temporal;
 import java.time.temporal.TemporalAccessor;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * jdk 8 中日期时间 API 的测试
@@ -15,6 +21,15 @@ import java.util.Date;
  * @create 2022-02-26 14:31
  */
 /*
+	日期时间 API 的迭代：
+	
+		第一代：jdk 1.0 Date 类
+		
+		第二代：jdk 1.1 Calendar 类，一定程度上替换 Date 类
+		
+		第三代：jdk 1.8 提出了新的一套 API
+	
+	
     JDK 1.0中包含了一个java.util.Date类，但是它的大多数方法已经在JDK 1.1引入Calendar类之后被弃用了。而Calendar并不比Date好多少。
 
     它们面临的问题是：
@@ -22,7 +37,7 @@ import java.util.Date;
         可变性：像日期和时间这样的类应该是不可变的。
 
         偏移性：Date中的年份是从1900开始的，而月份都从0开始
-        。
+        
         格式化：格式化只对Date有用，Calendar则不行。
 
         此外，它们也不是线程安全的；不能处理闰秒等
@@ -127,7 +142,9 @@ public class JDK8DateTimeTest {
         LocalDateTime localDateTime4 = localDateTime.minusDays(6);
         System.out.println(localDateTime); // 2022-02-26T16:34:12.053
         System.out.println(localDateTime4); // 2022-02-20T16:34:12.053
+
     }
+
 
     /*
         Instant 的使用
@@ -135,6 +152,8 @@ public class JDK8DateTimeTest {
         类似于 java.util.Date 类
 
         Instant：时间线上的一个瞬时点。 这可能被用来记录应用程序中的事件时间戳
+		
+		表示自 1970 年 1 月 1 日 0 时 0 分 0 秒(UTC) 开始的秒数
 
     */
     @Test
@@ -208,8 +227,155 @@ public class JDK8DateTimeTest {
         // 格式化
         String str5 = formatter4.format(localDateTime);
         System.out.println(str5); // 2022-02-26 05:24:56
+
         // 解析
+        LocalDateTime parse1 = LocalDateTime.parse("2022-02-26 05:24:56", formatter4);
+
         TemporalAccessor accessor = formatter4.parse("2022-02-26 05:24:56");
+        System.out.println(accessor.getClass());
         System.out.println(accessor); // {MinuteOfHour=24, NanoOfSecond=0, HourOfAmPm=5, SecondOfMinute=56, MicroOfSecond=0, MilliOfSecond=0},ISO resolved to 2022-02-26
     }
+
+    /*
+       其它API
+
+           ZoneId                   该类中包含了所有的时区信息，一个时区的ID，如 Europe/Paris
+
+           ZonedDateTime            一个在ISO-8601日历系统时区的日期时间，如 2007-12-03T10:15:30+01:00 Europe/Paris。
+
+               其中每个时区都对应着ID，地区ID都为“{区域}/{城市}”的格式，例如：Asia/Shanghai等
+
+           Clock                    使用时区提供对当前即时、日期和时间的访问的时钟。
+
+           持续时间：Duration        用于计算两个 "时间" 间隔
+
+           日期间隔：Period          用于计算两个 "日期" 间隔
+
+           TemporalAdjuster         时间校正器。有时我们可能需要获取例如：将日期调整到 "下一个工作日" 等操作。
+
+           TemporalAdjusters        该类通过静态方法(firstDayOfXxx()/lastDayOfXxx()/nextXxx())提供了大量的常用 TemporalAdjuster 的实现
+
+   */
+    @Test
+    public void test5() {
+        /*
+
+            //ZoneId:类中包含了所有的时区信息
+            // ZoneId的getAvailableZoneIds():获取所有的ZoneId
+            Set<String> zoneIds = ZoneId.getAvailableZoneIds();
+            for (String s : zoneIds) {
+                System.out.println(s);
+            }
+
+            // ZoneId的of():获取指定时区的时间
+            LocalDateTime localDateTime = LocalDateTime.now(ZoneId.of("Asia/Tokyo"));
+            System.out.println(localDateTime);
+
+            //ZonedDateTime:带时区的日期时间
+            // ZonedDateTime的now():获取本时区的ZonedDateTime对象
+            ZonedDateTime zonedDateTime = ZonedDateTime.now();
+            System.out.println(zonedDateTime);
+
+            // ZonedDateTime的now(ZoneId id):获取指定时区的ZonedDateTime对象
+            ZonedDateTime zonedDateTime1 = ZonedDateTime.now(ZoneId.of("Asia/Tokyo"));
+            System.out.println(zonedDateTime1);
+
+        */
+
+        /*
+            //Duration:用于计算两个“时间”间隔，以秒和纳秒为基准
+            LocalTime localTime = LocalTime.now();
+            LocalTime localTime1 = LocalTime.of(15, 23, 32);
+
+            //between():静态方法，返回Duration对象，表示两个时间的间隔
+            Duration duration = Duration.between(localTime1, localTime);
+            System.out.println(duration);
+            System.out.println(duration.getSeconds());
+            System.out.println(duration.getNano());
+
+            LocalDateTime localDateTime = LocalDateTime.of(2016, 6, 12, 15, 23, 32);
+            LocalDateTime localDateTime1 = LocalDateTime.of(2017, 6, 12, 15, 23, 32);
+            Duration duration1 = Duration.between(localDateTime1, localDateTime);
+            System.out.println(duration1.toDays());
+        */
+
+        /*
+            //Period:用于计算两个“日期”间隔，以年、月、日衡量
+            LocalDate localDate = LocalDate.now();
+            LocalDate localDate1 = LocalDate.of(2028, 3, 18);
+            Period period = Period.between(localDate, localDate1);
+            System.out.println(period);
+            System.out.println(period.getYears());
+            System.out.println(period.getMonths());
+            System.out.println(period.getDays());
+            Period period1 = period.withYears(2);
+            System.out.println(period1);
+        */
+
+        /*
+            // TemporalAdjuster:时间校正器
+            // 获取当前日期的下一个周日是哪天？
+            TemporalAdjuster temporalAdjuster = TemporalAdjusters.next(DayOfWeek.SUNDAY);
+            LocalDateTime localDateTime = LocalDateTime.now().with(temporalAdjuster);
+            System.out.println(localDateTime);
+
+            // 获取下一个工作日是哪天？
+            LocalDate localDate = LocalDate.now().with(new TemporalAdjuster() {
+                @Override
+                public Temporal adjustInto(Temporal temporal) {
+                    LocalDate date = (LocalDate) temporal;
+                    if (date.getDayOfWeek().equals(DayOfWeek.FRIDAY)) {
+                        return date.plusDays(3);
+                    } else if (date.getDayOfWeek().equals(DayOfWeek.SATURDAY)) {
+                        return date.plusDays(2);
+                    } else {
+                        return date.plusDays(1);
+                    }
+                }
+            });
+            System.out.println("下一个工作日是：" + localDate);
+        */
+    }
+
+
+    /*
+        与传统日期处理的转换
+
+            类                                       To 遗留类                                From 遗留类
+
+            java.time.Instant与java.util.Date        Date.from(instant)                      date.toInstant()
+
+            java.time.Instant与java.sql.Timestamp    Timestamp.from(instant)                 timestamp.toInstant()
+
+            java.time.ZonedDateTime 与
+            java.util.GregorianCalendar              GregorianCalendar.from(zonedDateTime)   cal.toZonedDateTime()
+
+            java.time.LocalDate与java.sql.Date       Date.valueOf(localDate)                 date.toLocalDate()
+
+            java.time.LocalTime与java.sql.Time       Date.valueOf(localDate)                 date.toLocalTime()
+
+            java.time.LocalDateTime与
+            java.sql.Timestamp                       Timestamp.valueOf(localDateTime)        timestamp.toLocalDateTime()
+
+            java.time.ZoneId与java.util.TimeZone     Timezone.getTimeZone(id)                timeZone.toZoneId()
+
+            java.time.format.DateTimeFormatter与
+            java.text.DateFormat                     formatter.toFormat()                           无
+
+    */
+
+    @Test
+    public void test6() {
+        LocalDate now = LocalDate.now();
+        java.sql.Date date = java.sql.Date.valueOf(now);
+
+        LocalTime time = LocalTime.now();
+        Time time1 = Time.valueOf(time);
+
+        LocalDateTime now1 = LocalDateTime.now();
+        Timestamp timestamp = Timestamp.valueOf(now1);
+
+        long l = timestamp.getTime();
+    }
+
 }

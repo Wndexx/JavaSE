@@ -30,6 +30,8 @@ import java.util.Date;
 public class DateTimeTest {
 
     /*
+		java.text.SimpleDateFormat 类
+	
         SimpleDateFormat 的使用：SimpleDateFormat 对日期 Date 类的格式化和解析
 
         1. 两个操作：
@@ -38,7 +40,7 @@ public class DateTimeTest {
 
             (2) 解析：格式化的逆过程，字符串 ---> 日期
 
-        2. SimpleDateFormat 的实例化
+        2. SimpleDateFormat 的实例化：new + 构造器
 
     */
     @Test
@@ -109,7 +111,7 @@ public class DateTimeTest {
         System.out.println(calendar.get(Calendar.DAY_OF_YEAR)); // 57
 
         // (2) set()
-        // calendar 可变的
+        // calendar 可变性
         calendar.set(Calendar.DAY_OF_MONTH, 22);
         days = calendar.get(Calendar.DAY_OF_MONTH);
         System.out.println(days); // 22
