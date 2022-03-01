@@ -13,14 +13,14 @@ public class SeasonTest1 {
     public static void main(String[] args) {
         Season1 autumn = Season1.AUTUMN;
 
-        // 1. toString()
+        // 1. toString()：返回枚举类对象的名称
         System.out.println(autumn.toString()); // AUTUMN
 
         // System.out.println(Season1.class.getSuperclass()); // class java.lang.Enum
 
         System.out.println("***********************************************");
 
-        // 2. values()
+        // 2. values()：返回所有枚举类对象构成的数组
         Season1[] values = Season1.values();
         for (int i = 0; i < values.length; i++) {
             System.out.println(values[i]);

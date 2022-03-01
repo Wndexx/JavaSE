@@ -20,8 +20,7 @@ public class SubClassTest {
 		// ----> 类优先原则
 		// 但是属性没有类优先原则，如果继承的父类和实现的接口中声明了同名的属性，那么子类在调用该属性时如果不显式指定则会出现编译错误，无法确定调用哪一个属性。
 		s.method3();
-		// SubClass.method2(); // Cannot make a static reference to the non-static
-		// method method2() from the type CompareA
+		// SubClass.method2(); // Cannot make a static reference to the non-static method method2() from the type CompareA
 
 		// 知识点4：如果实现类实现了多个接口，而这多个接口中定义了同名同参数的默认方法，那么在实现类没有重写此方法的情况下，报错 -----> 接口冲突
 		// 这就需要我们必须在实现类中重写此方法

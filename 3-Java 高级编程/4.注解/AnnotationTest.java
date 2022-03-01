@@ -109,6 +109,8 @@ import java.util.Date;
         Inherited：被它修饰的 Annotation 将具有继承性。如果某个类使用了被 @Inherited 修饰的 Annotation, 则其子类将自动具有该注解
 
     5. 通过反射获取注解信息
+	
+		前提：要求此注解的元注解 Retention 中声明的生命周期状态为 ：RUNTIME
 
     6. jdk 8 中注解的新特性：可重复注解、类型注解
 
