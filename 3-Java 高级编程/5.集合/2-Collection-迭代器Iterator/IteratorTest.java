@@ -12,6 +12,10 @@ import java.util.Iterator;
  */
 
 /*
+	Iterator对象称为迭代器(设计模式的一种)，主要用于遍历 Collection 集合中的元素。
+	
+	GOF给迭代器模式的定义为：提供一种方法访问一个容器(container)对象中各个元素，而又不需暴露该对象的内部细节。迭代器模式，就是为容器而生
+
     集合 Collection 元素的遍历操作，使用迭代器 Iterator 接口     不包括 Map
 
     1. 内部的方法：hasNext() 和 next()

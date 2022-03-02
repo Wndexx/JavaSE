@@ -112,6 +112,9 @@ import java.util.*;
         长度：size()
 
         遍历: Iterator 迭代器方式；增强 for 循环；普通的循环
+		
+		
+	存储的元素的要求：添加的对象所在的类要重写 equals() 方法
 
 */
 public class ListTest {
