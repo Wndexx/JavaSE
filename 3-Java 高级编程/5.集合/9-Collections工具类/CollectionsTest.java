@@ -111,6 +111,11 @@ public class CollectionsTest {
 
         /*
             Collections 类中提供了多个 synchronizedXxx() 方法，该方法可使将指定集合包装成线程同步的集合，从而可以解决多线程并发访问集合时的线程安全问题
+			
+			说明：ArrayList 和 HashMap 都是线程不安全的，如果程序要求线程安全，
+			
+			我们可以将 ArrayList、HashMap 转换为线程安全的，使用 synchronizedList(List list) 和 synchronizedMap(Map map)
+			
         */
         // 返回的 list1 即为线程安全的 list
         List list1 = Collections.synchronizedList(list);

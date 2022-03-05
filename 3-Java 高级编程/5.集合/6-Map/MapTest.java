@@ -90,10 +90,19 @@ import java.util.*;
             3. 首次调用 put 方法时，底层创建长度为 16 的数组
 
             4. jdk 7 底层结构只有：数组 + 链表。jdk 8 中底层结构：数组 + 链表 + 红黑树
+			
+				4.1 形成链表时，七上八下（jdk7：新的元素指向旧的元素；jdk8 旧的元素指向新的元素）
 
-               当数组的某一个索引位置上的元素以链表形式存在的数据个数 > 8，且当前数组的长度 > 64 时，此时此索引位置上的所有数据改为使用红黑树存储
+				4.2 当数组的某一个索引位置上的元素以链表形式存在的数据个数 > 8，且当前数组的长度 > 64 时，此时此索引位置上的所有数据改为使用红黑树存储
 
             HashMap源码中的重要常量
+				
+				DEFAULT_INITIAL_CAPACITY  HashMap 的默认容量，16
+				EFAULT_LOAD_FACTOR       HashMap 的默认加载因子 0.75
+				threshold                 扩容的临界值，= 容量 * 填充因子 ：16 * 0.75 => 12
+				TREEIFY_THRESHOLD         Bucket 中链表长度大于该默认值，转化为红黑树：8
+				MIN_TREEIFY_CAPACITY      桶中的 Node 被树化时最小的 hash表容量。
+				
 
                 DEFAULT_INITIAL_CAPACITY  HashMap 的默认容量，16
 
@@ -105,7 +114,7 @@ import java.util.*;
 
                 UNTREEIFY_THRESHOLD       Bucket 中红黑树存储的 Node 小于该默认值，转化为链表
 
-                MIN_TREEIFY_CAPACITY      桶中的 Node 被树化时最小的 has h表容量。（当桶中 Node 的数量大到需要变红黑树时，若 hash 表容量小于 MIN_TREEIFY_CAPACITY 时，
+                MIN_TREEIFY_CAPACITY      桶中的 Node 被树化时最小的 hash表容量。（当桶中 Node 的数量大到需要变红黑树时，若 hash 表容量小于 MIN_TREEIFY_CAPACITY 时，
                                           此时应执行 resize 扩容操作这个 MIN_TREEIFY_CAPACITY 的值至少是 TREEIFY_THRESHOLD 的4倍。）：64
 
                 table                     存储元素的数组，总是 2 的 n 次幂
@@ -119,8 +128,24 @@ import java.util.*;
                 threshold                 扩容的临界值，= 容量 * 填充因子 ：16 * 0.75 => 12
 
                 loadFactor                填充因子
+				
+			面试题：负载因子值的大小，对HashMap有什么影响
+			
+				1. 负载因子的大小决定了 HashMap 的数据密度。
+				
+				2. 负载因子越大密度越大，发生碰撞的几率越高，数组中的链表越容易长,造成查询或插入时的比较次数增多，性能会下降。
+				
+				3. 负载因子越小，就越容易触发扩容，数据密度也越小，意味着发生碰撞的几率越小，数组中的链表也就越短，查询和插入时比较的次数也越小，性能会更高。
+				
+					但是会浪费一定的内容空间。而且经常扩容也会影响性能，建议初始化预设大一点的空间。
+				
+				4. 按照其他语言的参考及研究经验，会考虑将负载因子设置为0.7~0.75，此均检索长度接近于常数
 
     四、LinkedHashMap 的底层实现原理（了解）
+	
+		LinkedHashMap 底层使用的结构与 HashMap 相同，因为 LinkedHashMap 继承于 HashMap
+		
+		区别就在于：LinkedHashMap 内部提供了 Entry，替换 HashMap 中的 Node
 
     源码：
 
