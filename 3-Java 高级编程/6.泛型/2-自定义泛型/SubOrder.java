@@ -17,4 +17,6 @@ public class SubOrder extends Order<Integer> { // SubOrder<T> ：不再是泛型
         // list.addAll(Arrays.asList(arr));
         return list;
     }
+    // 实例化时，如下的代码就是错误的
+    // SubOrder<Integer> o = new SubOrder<>();
 }

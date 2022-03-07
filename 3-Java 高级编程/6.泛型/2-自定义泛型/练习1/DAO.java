@@ -8,6 +8,7 @@ import java.util.List;
  * <p>
  * DAO：data(database) access object
  */
+// 定义了操作数据库中的表的通用操作
 public class DAO<T> { // 表的共性操作的 DAO
 
     // 添加一条记录
