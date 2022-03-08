@@ -23,6 +23,8 @@ import java.io.*;
 
        编码：字符数组、字符串 ---> 字节、字节数组     OutputStreamWriter
 
+       说明：编码决定了解码的方式
+
     4. 字符集
 
         常见的编码表
