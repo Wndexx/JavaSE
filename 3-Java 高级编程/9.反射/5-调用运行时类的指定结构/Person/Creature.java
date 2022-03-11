@@ -1,0 +1,21 @@
+package com.wndexx.java1;
+
+import java.io.Serializable;
+
+/**
+ * @author wndexx
+ * @create 2022-03-10 17:31
+ */
+public class Creature<T> implements Serializable {
+
+    private char gender;
+    public double weight;
+
+    private void breath() {
+        System.out.println("生物呼吸");
+    }
+
+    public void eat() {
+        System.out.println("生物吃东西");
+    }
+}
