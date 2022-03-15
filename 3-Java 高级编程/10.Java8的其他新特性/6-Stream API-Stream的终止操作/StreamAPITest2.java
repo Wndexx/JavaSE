@@ -106,10 +106,11 @@ public class StreamAPITest2 {
 
     // 2-归约
     /*
-        方法                                  描述
+        方法                                  	描述
+		
         reduce(T identity, BinaryOperator b)    可以将流中元素反复结合起来，得到一个值。返回 T
 
-        reduce(BinaryOperator b)            可以将流中元素反复结合起来，得到一个值。返回 Optional<T>
+        reduce(BinaryOperator b)            	可以将流中元素反复结合起来，得到一个值。返回 Optional<T>
 
 
         map 和 reduce 的连接通常称为 map-reduce 模式，因 Google 用它来进行网络搜索而出名。
@@ -164,7 +165,7 @@ public class StreamAPITest2 {
 
         collect(Collector c)    将流转换为其他形式。接收一个 Collector 接口的实现，用于给 Stream 中元素做汇总的方法
 
-        Collector 接口中方法的实现决定了如何对流执行收集的操作(如收集到 List、Set、Map)。 另外， Collectors 实用类提供了很多静态方法，可以方便地创建常见收集器实例，
+        Collector 接口中方法的实现决定了如何对流执行收集的操作(如收集到 List、Set、Map)。 另外， Collectors 实用类提供了很多静态方法，可以方便地创建常见收集器实例。
 
         具体方法与实例如下表：
 
